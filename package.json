@@ -3,6 +3,19 @@
   "version": "1.1.0",
   "type": "module",
   "private": true,
+  "scripts": {
+    "dev": "vite",
+    "translation:update": "node src/scripts/updateTranslations.js",
+    "parseText": "node src/scripts/parseText.js",
+    "updateCsv": "node src/scripts/updateCsv.js",
+    "postinstall": "npm run translation:update",
+    "dev:https": "cross-env HTTPS=true vite",
+    "build": "tsc --noEmit && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
+    "preview": "vite preview",
+    "predeploy": "npm run build"
+  },
   "dependencies": {
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
@@ -61,19 +74,7 @@
     "vite-plugin-mkcert": "1.17.8",
     "vite-tsconfig-paths": "5.1.4"
   },
-  "scripts": {
-    "dev": "vite",
-    "translation:update": "node src/scripts/updateTranslations.js",
-    "parseText": "node src/scripts/parseText.js",
-    "updateCsv": "node src/scripts/updateCsv.js",
-    "postinstall": "npm run translation:update",
-    "dev:https": "cross-env HTTPS=true vite",
-    "build": "tsc --noEmit && vite build",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
-    "preview": "vite preview",
-    "predeploy": "npm run build"
-  },
+  "engines": { "node": ">=22" },
   "browserslist": {
     "production": [
       ">0.2%",
