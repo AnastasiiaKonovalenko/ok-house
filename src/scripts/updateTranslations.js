@@ -14,6 +14,7 @@ const pathToTranslationsSource = path.join(__dirname, "../locales/translations.c
 getTranslation(pathToTranslationsSource).then(data => {
   const header = data.shift();
   const targets = header.slice(LANGUAGE_COLUMNS_OFFSET);
+  debugger
   const { targetsMap, missingEntries } = formatTranslation(data, header);
 
   saveTranslatedFile({

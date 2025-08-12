@@ -17,7 +17,7 @@ export function getTranslation(pathToTranslationsSource) {
 
 export function formatTranslation(rows, header) {
   const targets = header.slice(2);
-  const data = rows.map(row => _.zipObject(header, row));
+  const data = rows.filter(x => x.length > 0).map(row => _.zipObject(header, row));
   const missingEntries = {};
   const targetsMap = targets
     .map(target => ({

@@ -3,10 +3,10 @@ import i18next from "i18next";
 
 // Import translation files
 import { en, es, lt, ru } from "../locales/lang";
-import useStore from "../store"; // Import your Zustand store
+const supportedLangs = ["en", "ru", "lt", "es"];
+const browserLang = navigator.language.split("-")[0];
 
-// Get initial language from Zustand store
-const initialLang = useStore.getState().appStore.lang;
+const initialLang = supportedLangs.includes(browserLang) ? browserLang : "en";
 i18next.use(initReactI18next).init({
   resources: {
     en: { translation: en },
