@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         lazy: async () => {
-          const mod = await import("../pages/Home");
+          const mod = await import("../pages/home/Home");
           return { Component: mod.default };
         },
       },
