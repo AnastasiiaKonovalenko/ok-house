@@ -9,15 +9,13 @@ export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
 
   return (
-    <Box sx={{ minHeight: "100dvh" }}>
+    <Box sx={{ display: "flex", flexGrow: 1 }}>
       {showIntro && (
         <IntroOverlay
           onShowHeader={() => setHeaderVisible(true)}
           onFinish={() => setShowIntro(false)}
         />
       )}
-
-      {/* основной контент страницы */}
     </Box>
   );
 }

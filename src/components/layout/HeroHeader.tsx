@@ -10,22 +10,32 @@ export default function AppHeader({ visible }: { visible: boolean }) {
 
   return (
     <AppBar
-      position="fixed"
       elevation={0}
       color="transparent"
       sx={{
-        pointerEvents: "none",
-        backdropFilter: "blur(2px)",
-        zIndex: (theme) => theme.zIndex.drawer + 1,
+        zIndex: theme => theme.zIndex.drawer + 1,
+        position: "relative",
         px: { xs: 2, sm: 3, md: 6 },
       }}
     >
-      <Toolbar sx={{ gap: { xs: 1, sm: 2 }, minHeight: { xs: 48, sm: 56 }, py: { xs: 2, sm: 3, md: 6 }, px: { xs: 2, sm: 3, md: 6 } }}>
+      <Toolbar
+        sx={{
+          gap: { xs: 1, sm: 2 },
+          minHeight: { xs: 48, sm: 56 },
+          py: { xs: 4, sm: 6, md: 12 },
+          px: { xs: 2, sm: 3, md: 4 },
+        }}
+      >
         <MT
           initial={{ opacity: 0, y: -6 }}
           animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : -6 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          sx={{ fontWeight: 300, textTransform: "uppercase", letterSpacing: "0.3em", pointerEvents: "auto" }}
+          sx={{
+            fontWeight: 300,
+            textTransform: "uppercase",
+            letterSpacing: "0.3em",
+            pointerEvents: "auto",
+          }}
         >
           <Box
             component="span"
@@ -41,12 +51,7 @@ export default function AppHeader({ visible }: { visible: boolean }) {
             }}
           >
             {/* Moving logo (below text) */}
-            <LogoContainer
-              start={visible}
-              cycles={2}
-              period={1500}
-              size={"var(--logo-size)"}
-            />
+            <LogoContainer start={visible} cycles={2} period={1500} size={"var(--logo-size)"} />
 
             {/* Site name (above, blends against the backdrop) */}
             <Typography

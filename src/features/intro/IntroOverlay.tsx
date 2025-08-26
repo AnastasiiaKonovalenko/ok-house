@@ -4,6 +4,7 @@ import { Box } from "@mui/material";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import SloganMovingLetters from "@/features/intro/SloganMovingLetters";
+import { useEffect } from "react";
 
 const MOVE_MS = 650; // задержка перед показом хедера
 
@@ -20,14 +21,14 @@ export default function IntroOverlay({
   const [playOut, setPlayOut] = React.useState(false);
 
   // без анимаций — сразу показать хедер
-  React.useEffect(() => {
+  useEffect(() => {
     if (!reduce) return;
     onShowHeader();
     onFinish();
   }, [reduce, onShowHeader, onFinish]);
 
   // запускаем уход слогана через фиксированное время
-  React.useEffect(() => {
+  useEffect(() => {
     if (reduce) return;
     const id = setTimeout(() => setPlayOut(true), 1200);
     return () => clearTimeout(id);
