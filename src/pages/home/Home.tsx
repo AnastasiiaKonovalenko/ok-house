@@ -1,41 +1,23 @@
-import { Box, Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
+import { Box } from "@mui/material";
+import { useOutletContext } from "react-router-dom";
+import IntroOverlay from "@/features/intro/IntroOverlay";
+import { HeaderCtx } from "@/components/layout/HeroLayout.tsx";
+import { useState } from "react";
 
-const Home = () => {
-  const { t } = useTranslation();
+export default function Home() {
+  const { setHeaderVisible } = useOutletContext<HeaderCtx>();
+  const [showIntro, setShowIntro] = useState(true);
 
   return (
-    <Box
-      sx={{
-        flex: 1,
-        pt: "30vh",
-        textAlign: "center",
-      }}
-    >
-      <Typography
-        variant="h6"
-        sx={{
-          textTransform: "uppercase",
-          mb: 1,
-          fontWeight: 300,
-          fontFamily: "Comfortaa",
-        }}
-      >
-        {t("common.siteName")}
-      </Typography>
+    <Box sx={{ minHeight: "100dvh" }}>
+      {showIntro && (
+        <IntroOverlay
+          onShowHeader={() => setHeaderVisible(true)}
+          onFinish={() => setShowIntro(false)}
+        />
+      )}
 
-      <Typography
-        variant="h2"
-        sx={{
-          textTransform: "uppercase",
-          fontWeight: 300,
-          fontFamily: "Comfortaa",
-        }}
-      >
-        {t("common.siteSlogan")}
-      </Typography>
+      {/* основной контент страницы */}
     </Box>
   );
-};
-
-export default Home;
+}
