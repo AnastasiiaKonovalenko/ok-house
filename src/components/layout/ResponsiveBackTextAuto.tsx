@@ -171,7 +171,6 @@ const LineGrid = memo(function LineGrid({
               justifySelf: "center",
               whiteSpace: "pre",
               willChange: "transform, filter, opacity",
-              lineHeight: 0.6
             }}
           >
             {text[realIndex]}

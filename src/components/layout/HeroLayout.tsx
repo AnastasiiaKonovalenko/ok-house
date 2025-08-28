@@ -9,7 +9,11 @@ export const backText = {
   textTransform: "uppercase",
   fontFamily: "DarkerGrotesque",
   fontWeight: 300,
-  lineHeight: 1,
+  lineHeight: {
+    xs: 0.75,   // phones: tight
+    sm: 1,  // tablets
+    md: 0.6,  // desktop
+  },
 
   // переносы для длинных слов
   wordBreak: "break-word",
