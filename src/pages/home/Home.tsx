@@ -54,43 +54,35 @@ export default function Home() {
       {showCarousel && (
         <Carousel
           swiperProps={{
-            onAfterInit: handleAfterInit,
-            modules: [Mousewheel, FreeMode],
+            modules: [FreeMode, Mousewheel],
             freeMode: true,
             direction: "horizontal",
             mousewheel: { releaseOnEdges: true, sensitivity: 0.7 },
-            style: { width: "100%" },
+            onAfterInit: handleAfterInit,
+
+            allowTouchMove: true,
+            simulateTouch: true,
+            touchStartPreventDefault: false,
+            passiveListeners: false,
+            nested: true,
+            resistanceRatio: 0.85,
+            touchReleaseOnEdges: true,
+            threshold: 6,            // ignore tiny jitter
+            watchOverflow: true,     // disable if not enough slides
+
+            style: {
+              width: "100%",
+              touchAction: "pan-y",
+              WebkitOverflowScrolling: "touch",
+              overscrollBehaviorX: "contain",
+            },
+
             breakpoints: {
-              0: {
-                slidesPerView: 1,
-                spaceBetween: 16,
-                slidesOffsetBefore: 32,
-                slidesOffsetAfter: 32,
-              },
-              600: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-                slidesOffsetBefore: 32,
-                slidesOffsetAfter: 32,
-              },
-              900: {
-                slidesPerView: 3,
-                spaceBetween: 24,
-                slidesOffsetBefore: 48,
-                slidesOffsetAfter: 48,
-              },
-              1200: {
-                slidesPerView: 3,
-                spaceBetween: 24,
-                slidesOffsetBefore: 80,
-                slidesOffsetAfter: 80,
-              },
-              1400: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-                slidesOffsetBefore: 80,
-                slidesOffsetAfter: 80,
-              },
+              0:   { slidesPerView: 1, spaceBetween: 16, slidesOffsetBefore: 32, slidesOffsetAfter: 32 },
+              600: { slidesPerView: 2, spaceBetween: 20, slidesOffsetBefore: 32, slidesOffsetAfter: 32 },
+              900: { slidesPerView: 3, spaceBetween: 24, slidesOffsetBefore: 48, slidesOffsetAfter: 48 },
+              1200:{ slidesPerView: 3, spaceBetween: 24, slidesOffsetBefore: 80, slidesOffsetAfter: 80 },
+              1400:{ slidesPerView: 3, spaceBetween: 30, slidesOffsetBefore: 80, slidesOffsetAfter: 80 },
             },
           }}
           slides={whatWeAre.map((x, idx) => (
@@ -119,6 +111,7 @@ export default function Home() {
             </AnimatedIntroSlide>
           ))}
         />
+
       )}
     </Box>
   );
