@@ -8,12 +8,8 @@ const BoxInfo = ({ children, sx }: Props) => {
   return (
     <Box
       className="no-swipe"                   // <- disable Swiper swipe over this area
-      onWheel={(e) => e.stopPropagation()}   // <- block wheel from reaching Swiper
-      onPointerDownCapture={(e) => e.stopPropagation()} // blocks drag-start bubbling
       sx={{
         overflowY: "auto",
-        overscrollBehaviorY: "contain",      // prevent scroll chaining
-        // (your styles)
         boxSizing: "border-box",
         // border: "1px solid #EB95AA",
         backgroundColor: "rgba(255,255,255,0.9)",
