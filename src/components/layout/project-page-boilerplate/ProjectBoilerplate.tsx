@@ -14,8 +14,8 @@ const ProjectBoilerplate = ({ header, text, imgPath }: Props) => {
   return (
     <Grid
       container
-      spacing={{ xs: 3, md: 6 }}
-      rowSpacing={{ xs: 1, md: 3 }}
+      spacing={{ xs: 1, md: 6 }}
+      rowSpacing={{ xs: 2, md: 3 }}
       sx={{
         px: { xs: 6, md: 10 },
         py: { xs: 3, md: 5 }
@@ -71,7 +71,7 @@ const ProjectBoilerplate = ({ header, text, imgPath }: Props) => {
         <Box
           sx={{
             columnCount: 2,           // количество колонок
-            columnGap: "2rem",        // расстояние между ними
+            columnGap: { md: "1rem", lg: "2rem" },        // расстояние между ними
             textAlign: "justify",     // красиво выравнивает текст
           }}
         >
