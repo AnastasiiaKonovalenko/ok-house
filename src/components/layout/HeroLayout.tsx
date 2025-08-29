@@ -4,6 +4,8 @@ import { useState } from "react";
 import HeroHeader from "@/components/layout/HeroHeader";
 import ResponsiveBackTextAuto from "@/components/layout/ResponsiveBackTextAuto.tsx";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router";
+import IntroOverlay from "@/features/intro/IntroOverlay.tsx";
 
 export const backText = {
   textTransform: "uppercase",
@@ -46,15 +48,44 @@ export const backText = {
 
 export type HeaderCtx = {
   setHeaderVisible: (v: boolean) => void;
+  showIntro: boolean;
 };
 
 export function HeroLayout() {
   const [headerVisible, setHeaderVisible] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
+
+  const { pathname } = useLocation();
+
+  const partsMap: Record<
+    string,
+    { xs: string[]; md: string[]; lg: string[], isHeader: boolean }
+  > = {
+    "/": {
+      xs: ["pur", "pos", "sibi", "lity"],
+      md: ["purpo", "ssibi", "lity"],
+      lg: ["purpos", "sibility"],
+      isHeader: true,
+    },
+    "/projects": {
+      xs: ["pr", "oj", "ec", "ts"],
+      md: ["proj", "ects"],
+      lg: ["proj", "ects"],
+      isHeader: true,
+    },
+  };
+
+  const current = partsMap[pathname];
 
   return (
     <Box sx={{ height: "100vh", display: "flex", flexDirection: "column" }}>
-      <HeroHeader visible={headerVisible} />
-
+      {current?.isHeader && (<HeroHeader visible={headerVisible} />)}
+      {showIntro && (
+        <IntroOverlay
+          onShowHeader={() => setHeaderVisible(true)}
+          onFinish={() => setShowIntro(false)}
+        />
+      )}
       <Box
         component="main"
         sx={{
@@ -78,34 +109,37 @@ export function HeroLayout() {
             opacity: headerVisible ? 1 : 0,
           }}
         >
-          <motion.div
-            key={headerVisible ? "bg-on" : "bg-off"} // re-mount when becomes visible
-            initial={{ opacity: 0 }}
-            animate={{ opacity: headerVisible ? 1 : 0 }}
-            transition={{ delay: headerVisible ? 0.15 : 0, duration: 0.45, ease: "easeOut" }}
-            style={{
-              position: "absolute",
-              inset: 0,
-              zIndex: -1,
-              pointerEvents: "none",
-            }}
-            aria-hidden
-          >
-            <ResponsiveBackTextAuto
-              xsParts={["pur", "pos", "sibi", "lity"]}
-              mdParts={["purpo", "ssibi", "lity"]}
-              lgParts={["purpos", "sibility"]}
-              sx={backText}
-              lang="en"
-              timing={{
-                xs: { baseDelay: 0.15, step: 0.04, duration: 0.55 },
-                md: { baseDelay: 0.18, step: 0.05, duration: 0.6, effect: "blur" },
-                lg: { baseDelay: 0.22, step: 0.06, duration: 0.65, effect: "blur" },
+          {current && (
+            <motion.div
+              key={headerVisible ? "bg-on" : "bg-off"} // re-mount when becomes visible
+              initial={{ opacity: 0 }}
+              animate={{ opacity: headerVisible ? 1 : 0 }}
+              transition={{ delay: headerVisible ? 0.15 : 0, duration: 0.45, ease: "easeOut" }}
+              style={{
+                position: "absolute",
+                inset: 0,
+                zIndex: -1,
+                pointerEvents: "none",
               }}
-            />
-          </motion.div>
+              aria-hidden
+            >
+              <ResponsiveBackTextAuto
+                key={pathname}
+                xsParts={current.xs}
+                mdParts={current.md}
+                lgParts={current.lg}
+                sx={backText}
+                lang="en"
+                timing={{
+                  xs: { baseDelay: 0.15, step: 0.04, duration: 0.55 },
+                  md: { baseDelay: 0.18, step: 0.05, duration: 0.6, effect: "blur" },
+                  lg: { baseDelay: 0.22, step: 0.06, duration: 0.65, effect: "blur" },
+                }}
+              />
+            </motion.div>
+          )}
         </Box>
-        <Outlet context={{ setHeaderVisible } satisfies HeaderCtx} />
+        <Outlet context={{ setHeaderVisible, showIntro } satisfies HeaderCtx} />
       </Box>
     </Box>
   );

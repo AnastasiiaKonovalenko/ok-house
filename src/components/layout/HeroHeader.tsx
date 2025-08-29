@@ -2,11 +2,13 @@ import { AppBar, Toolbar, Typography, Box } from "@mui/material";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import LogoContainer from "@/components/layout/LogoContainer";
+import { useNavigate } from "react-router";
 
 const MT = motion(Box);
 
 export default function AppHeader({ visible }: { visible: boolean }) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   return (
     <AppBar
@@ -39,6 +41,7 @@ export default function AppHeader({ visible }: { visible: boolean }) {
         >
           <Box
             component="span"
+            onClick={() => navigate("/")}
             sx={{
               "--logo-size": "clamp(40px, 20vw, 140px)",
               display: "flex",
@@ -47,6 +50,7 @@ export default function AppHeader({ visible }: { visible: boolean }) {
               gap: { xs: 0.5, sm: 1 },
               textAlign: "center",
               position: "relative",
+              cursor: "pointer",
               isolation: "isolate", // ← keep blending local
             }}
           >

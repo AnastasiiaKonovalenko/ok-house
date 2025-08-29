@@ -1,4 +1,3 @@
-// src/features/intro/IntroOverlay.tsx
 import * as React from "react";
 import { Box } from "@mui/material";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
@@ -6,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useEffect, useMemo, useRef, useState } from "react";
 import ResponsiveBackTextAuto from "@/components/layout/ResponsiveBackTextAuto.tsx";
 
-const MOVE_MS = 600; // задержка перед показом хедера
+const MOVE_MS = 600;
 
 type Timing = {
   baseDelay?: number;
@@ -125,6 +124,9 @@ export default function IntroOverlay({
             lang="en"
             timing={timing}
             out={out}
+            sx={{
+              textTransform: "uppercase",
+            }}
           />
         </Box>
       </Box>
