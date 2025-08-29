@@ -14,6 +14,25 @@ export const router = createBrowserRouter([
           return { Component: mod.default };
         },
       },
+      {
+        path: "projects",
+        children: [
+          {
+            index: true,
+            lazy: async () => {
+              const mod = await import("../pages/projects/Projects.tsx");
+              return { Component: mod.default };
+            },
+          },
+          {
+            path: "on-journal",
+            lazy: async () => {
+              const mod = await import("../pages/projects/on-journal/OnJournal.tsx");
+              return { Component: mod.default };
+            },
+          },
+        ]
+      },
     ],
   },
 ]);

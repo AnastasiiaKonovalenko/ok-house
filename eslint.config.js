@@ -9,7 +9,6 @@ import unusedImportsPlugin from "eslint-plugin-unused-imports";
 import importPlugin from "eslint-plugin-import";
 import * as js from 'typescript-eslint';
 
-
 export default tseslint.config(
   {
     ignores: [
