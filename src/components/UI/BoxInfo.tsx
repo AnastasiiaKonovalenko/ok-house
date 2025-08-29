@@ -1,5 +1,5 @@
 import { Box, SxProps, Theme, Typography } from "@mui/material";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { StyledRouterLink } from "@/components/UI/styled-components/StyledRouterLink.tsx";
 
 type Props = {
