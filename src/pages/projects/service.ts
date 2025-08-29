@@ -1,11 +1,12 @@
 import { Card } from "@/components/layout/page-boilerplate/PageBoilerplate.tsx";
+import onJournalImg from "@/assets/projects/on-journal/on-journal-small.png";
 
 export const PROJECTS_LINKS_CONFIG: ReadonlyArray<Card> = [
   {
     header: "On Journal",
     text: "",
     path: "/projects/on-journal",
-    imgPath: "src/assets/projects/on-journal/on-journal-small.png"
+    imgPath: onJournalImg
   },
   {
     header: "TikiFarm",
