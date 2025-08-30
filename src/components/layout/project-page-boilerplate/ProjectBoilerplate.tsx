@@ -86,7 +86,6 @@ const ProjectBoilerplate = ({ header, text, imgPath }: Props) => {
               hyphens: "auto",
               overflowWrap: "anywhere",
               wordBreak: 'break-word',
-              textAlign: "justify",
               textAlignLast: "start",
               textWrap: "balance",
               textRendering: "optimizeLegibility", // ⬅️ nicer kerning/ligatures where supported
