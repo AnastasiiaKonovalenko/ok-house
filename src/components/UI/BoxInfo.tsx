@@ -22,8 +22,8 @@ const BoxInfo = ({ children, header, text, path, imgPath, sx }: Props) => {
         display: "flex",
         flexDirection: "column",
         minWidth: { xs: "84vw", sm: "25vw" },
-        width: { xs: "84vw", sm: "25vw" },
-        height: { xs: "84vw", sm: "25vw" },
+        width: { xs: "84vw", sm: "45vw", md: "25vw" },
+        height: { xs: "84vw", sm: "45vw", md: "25vw" },
         p: { xs: "6vw", sm: "3vw" },
         ...(sx ?? {}),
       }}
