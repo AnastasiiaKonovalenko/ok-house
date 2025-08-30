@@ -15,10 +15,10 @@ const ProjectBoilerplate = ({ header, text, imgPath }: Props) => {
     <Grid
       container
       spacing={{ xs: 1, md: 6 }}
-      rowSpacing={{ xs: 2, md: 3 }}
+      rowSpacing={{ xs: 1, md: 2 }}
       sx={{
         px: { xs: 6, md: 10 },
-        py: { xs: 3, md: 5 }
+        py: { xs: 2, md: 4 }
       }}
       alignItems="start"
     >
@@ -29,7 +29,7 @@ const ProjectBoilerplate = ({ header, text, imgPath }: Props) => {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          mt={{ xs: 1, md: 2, lg: 5 }}>
+        >
             <IconButton
               onClick={() => navigate(-1)}
               sx={{
