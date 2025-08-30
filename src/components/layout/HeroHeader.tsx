@@ -24,7 +24,7 @@ export default function AppHeader({ visible }: { visible: boolean }) {
         sx={{
           gap: { xs: 1, sm: 2 },
           minHeight: { xs: 48, sm: 56 },
-          py: { xs: 4, sm: 6, md: 12 },
+          py: { xs: 4, sm: 6, md: 7, lg: 10 },
           px: { xs: 2, sm: 3, md: 4 },
         }}
       >
