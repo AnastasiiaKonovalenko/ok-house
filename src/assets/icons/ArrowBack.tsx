@@ -11,7 +11,7 @@ type ArrowIconProps = {
 const SIZE_MAP: Record<SvgSize, number> = {
   small: 32,
   medium: 64,
-  large: 113,
+  large: 75,
 };
 
 export function ArrowBack({ size = "medium", sx }: ArrowIconProps) {

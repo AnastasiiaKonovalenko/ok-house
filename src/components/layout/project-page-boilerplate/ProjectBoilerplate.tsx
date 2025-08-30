@@ -22,40 +22,40 @@ const ProjectBoilerplate = ({ header, text, imgPath }: Props) => {
       }}
       alignItems="start"
     >
-      <Grid container size={6}>
-        <Grid size={2}>
-          <IconButton
-            onClick={() => navigate(-1)}
-            sx={{
-              p: 0,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <ArrowBack size={{ xs: "small", md: "medium", lg: "large" }} />
-          </IconButton>
-        </Grid>
         <Grid
-          size={10}
+          height={{xs: 32, md: 64, lg: 75}}
+          position="relative"
+          size={{ xs: 12, lg: 6 }}
           display="flex"
           alignItems="center"
           justifyContent="center"
-          pr={{ xs: 2, md: 10, lg: 20 }}
           mt={{ xs: 1, md: 2, lg: 5 }}>
+            <IconButton
+              onClick={() => navigate(-1)}
+              sx={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                p: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <ArrowBack size={{ xs: "small", md: "medium", lg: "large" }} />
+            </IconButton>
           <Typography
             sx={{
               letterSpacing: 2,
               textTransform: "uppercase",
-              fontSize: { xs: "2vw", md: "2vw", lg: "32px" } }}
+              fontSize: { xs: "2vw", md: "2vw", lg: "28px" } }}
           >
             {header}
           </Typography>
         </Grid>
-      </Grid>
 
-      <Grid size={6} />
-      <Grid size={{ md: 12, lg: 6 }}>
+      <Grid size={{ xs: 0, lg: 6}}  />
+      <Grid size={{ xs: 12, lg: 6 }}>
         <Box
           component="img"
           src={imgPath}
