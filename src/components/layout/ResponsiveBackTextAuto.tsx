@@ -279,7 +279,7 @@ export default function ResponsiveBackTextFill({
   }, [out, enterEstimateMs]);
 
   return (
-    <Box sx={{ px: { xs: 1, sm: 2, md: 5 } }}>
+    <Box sx={{ px: { xs: 1, sm: 2, md: 5 }, boxSizing: "border-box" }}>
       {/* xs */}
       <Section
         parts={xsParts}

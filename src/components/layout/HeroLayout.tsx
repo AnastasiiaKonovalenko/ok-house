@@ -27,7 +27,7 @@ export const backText = {
 
   // кегль по брейкпоинтам (на десктопе — как у тебя)
   fontSize: {
-    md: "26.8vw",
+    md: "25vw",
     sm: "25vw",
     xs: "33vw",
   },
