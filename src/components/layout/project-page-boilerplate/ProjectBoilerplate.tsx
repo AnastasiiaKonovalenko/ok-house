@@ -67,15 +67,31 @@ const ProjectBoilerplate = ({ header, text, imgPath }: Props) => {
           }}
         />
       </Grid>
-      <Grid alignItems="start" size={{ md: 12, lg: 6 }}>
+      <Grid alignItems="flex-start" size={{ md: 12, lg: 6 }}>
         <Box
           sx={{
-            columnCount: 2,           // количество колонок
-            columnGap: { md: "1rem", lg: "2rem" },        // расстояние между ними
-            textAlign: "justify",     // красиво выравнивает текст
+            columnCount: 2,
+            columnGap: { md: "1rem", lg: "2rem" },
+            columnFill: "balance",          // ⬅️ balance column heights
           }}
         >
-          <Typography variant="body1" sx={{ textTransform: "uppercase", fontSize: { xs: "0.5rem", md: "1rem" }}}>
+          <Typography
+            component="div"
+            variant="body1"
+            lang="en"
+            sx={{
+              textTransform: "uppercase",
+              fontSize: { xs: "0.5rem", md: "1rem" },
+              lineHeight: { xs: 1.35, md: 1.5 },  // ⬅️ slightly tighter lines helps justify
+              hyphens: "auto",
+              overflowWrap: "anywhere",
+              wordBreak: 'break-word',
+              textAlign: "justify",
+              textAlignLast: "start",
+              textWrap: "balance",
+              textRendering: "optimizeLegibility", // ⬅️ nicer kerning/ligatures where supported
+            }}
+          >
             {text}
           </Typography>
         </Box>
